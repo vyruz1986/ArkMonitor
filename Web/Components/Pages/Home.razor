@@ -1,7 +1,20 @@
 ﻿@page "/"
+@using ArkMonitor.Data.Services
+@inject ArkService arkService;
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+Players: @players
+
+@code
+{
+    public string players = "";
+    protected override async Task OnInitializedAsync()
+    {
+        players = await arkService.GetPlayersAsync();
+    }
+}

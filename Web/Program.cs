@@ -1,3 +1,5 @@
+using ArkMonitor.Data.Extensions;
+using ArkMonitor.Data.Services;
 using ArkMonitor.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddCoreRCon(builder.Configuration);
+builder.Services.AddSingleton<ArkService>();
 
 var app = builder.Build();
 
